@@ -1,12 +1,21 @@
 import React from "react";
 import { format } from "date-fns";
 import ExampleComponent from "./ExampleComponent";
-
-// Add your code own within the return statement
+import TestComponent from "./TestComponent"
+import { render, screen } from '@testing-library/react';
+import TestComponent from './TestComponent';
+test("should include the <TestComponent />", () => {
+  render(<TestComponent />);
+  const element = screen.getByText("time video");
+  expect(element).toBeInTheDocument();
+});
+const now = 'Now';
 function App() {
   return (
     <div className="App">
-      <h1>{format(new Date(), "MMMM do yyyy, h:mm:ss a")}</h1>
+      <h1>
+        {now}
+      </h1>
       <p className="App-intro">
         In React apps, we write JSX - it looks like HTML, and uses a lot of HTML
         syntax. JSX lets us include JavaScript functions right along with the
